@@ -1,18 +1,24 @@
-using System;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PlayerControlller : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
     public float rotationSpeed = 200f;
     public GameObject projectilePrefab;
     public float projectileSpeed = 10.0f;
     public Transform firePoint;
+    public int lives = 3;
+    public Image[] lifeImages;
 
+    void Start()
+    {
+        UpdateLivesUI();
+        ConstrainToCameraBounds();
+    }
     void Update()
     {
         Move();
-        ConstrainToCameraBounds();
     }
     void Move()
     {
@@ -37,8 +43,29 @@ public class PlayerControlller : MonoBehaviour
     {
         if (other.gameObject.CompareTag("asteroide"))
         {
+            Destroy(other.gameObject);
+            LoseLife();
+        }
+    }
+    void LoseLife()
+    {
+        if (lives > 0)
+        {
+            lives--;
+            UpdateLivesUI();
+
+            if (lives <= 0)
+            {
             Destroy(gameObject);
             GameController.instance.GameOver();
+            }
+        }
+    }
+    public void UpdateLivesUI()
+    {
+        for (int i = 0; i < lifeImages.Length; i++)
+        {
+            lifeImages[i].enabled = i < lives;
         }
     }
     void ConstrainToCameraBounds()

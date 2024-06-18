@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public Text scoreText;
     public int score = 0;
+    public GameObject extraLifePrefab;
 
     void Awake()
     {
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
     {
         score += points;
         UpdateScoreText();
+        CheckForExtraLife();
     }
 
     void UpdateScoreText()
@@ -40,6 +42,19 @@ public class GameManager : MonoBehaviour
         {
             scoreText.text = "Score: " + score.ToString();
         }
+    }
+    void CheckForExtraLife()
+    {
+        if (score % 200 == 0 && score != 0)
+        {
+            GenerateExtraLife();
+        }
+    }
+
+    void GenerateExtraLife()
+    {
+        Vector2 randomPosition = CameraBounds.instance.GetRandomPosition();
+        Instantiate(extraLifePrefab, randomPosition, Quaternion.identity);
     }
 
     public int GetScore()

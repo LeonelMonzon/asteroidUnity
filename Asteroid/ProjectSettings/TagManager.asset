@@ -6,6 +6,7 @@ TagManager:
   tags:
   - asteroide
   - projectile
+  - fragmento
   layers:
   - Default
   - TransparentFX

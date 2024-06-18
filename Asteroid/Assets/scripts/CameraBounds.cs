@@ -60,4 +60,10 @@ public class CameraBounds : MonoBehaviour
         rightCollider.size = new Vector2(1f, maxY - minY);
         rightBound.transform.position = new Vector2(maxX + 0.5f, (minY + maxY) / 2);
     }
+    public Vector2 GetRandomPosition()
+    {
+        float randomX = Random.Range(minX, maxX);
+        float randomY = Random.Range(minY, maxY);
+        return new Vector2(randomX, randomY);
+    }
 }
