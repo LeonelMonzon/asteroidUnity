@@ -172,3 +172,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 10
+  fragmento: {fileID: 7487118103909678704, guid: 1c0bf21e302bb0c4c9f3a66361cd0c8b, type: 3}
+  destructionDelay: 2

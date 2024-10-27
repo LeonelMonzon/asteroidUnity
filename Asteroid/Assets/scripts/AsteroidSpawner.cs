@@ -3,7 +3,7 @@ using UnityEngine;
 public class AsteroidSpawner : MonoBehaviour
 {
     public GameObject asteroidPrefab;
-    public float spawnInterval = 0.75f; 
+    public float spawnInterval = 0.25f; 
     public float spawnDistance = 10.0f; 
     public float minSpeed = 10.0f; 
     public float maxSpeed = 20.0f; 

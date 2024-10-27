@@ -45,4 +45,9 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Reinicia la escena actual
         Invoke("FindPlayer", 0.1f);
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
